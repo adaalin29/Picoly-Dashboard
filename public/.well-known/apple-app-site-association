@@ -1,0 +1,10 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [{
+            "appID": "9HM8C8SHFU.org.reactjs.native.example.Picoly",
+            "paths": ["*"]
+            }
+        ]
+    }
+}

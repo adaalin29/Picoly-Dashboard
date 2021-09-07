@@ -1,0 +1,279 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Integration of Api Documentation for Picoly",
+        "description": "Integration of Api Documentation for Picoly using php",
+        "contact": {
+            "email": "tehnic@touch-media.ro"
+        },
+        "license": {
+            "name": "Backpack 3.6",
+            "url": "https://backpackforlaravel.com/"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://client.picoly.app/",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/api/picoly/get-tables": {
+            "get": {
+                "tags": [
+                    "Get tables"
+                ],
+                "summary": "Fetch tables",
+                "operationId": "get-tables",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        },
+        "/api/picoly/get-products": {
+            "get": {
+                "tags": [
+                    "Get products"
+                ],
+                "summary": "Fetch products",
+                "description": "Get all menus with digital categories and every digital categories has products inside, like a tree: Menu>DigitalCategories>Products",
+                "operationId": "get-products",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        },
+        "/api/picoly/get-orders": {
+            "post": {
+                "tags": [
+                    "Get orders by date"
+                ],
+                "summary": "Fetch orders",
+                "description": "The timestamp format need to be Y-m-d. Example: 2020-11-27. In each order you can have deals, services or products described below: Deal have name, description;\n      Service have name, description, price;\n      Product have anything else;",
+                "operationId": "get-orders",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        },
+        "/api/picoly/get-table-info": {
+            "post": {
+                "tags": [
+                    "Get table info by table_id"
+                ],
+                "summary": "Fetch table info",
+                "description": "Look for table status\n          free -  libera;\n          occupied -  ocupata;\n          requested -  esti chemat;\n          bill -  cere nota;\n          turn -  cere nota;\n          cancel -  cere nota;\n          deals -  cand comand o oferta disponibila;\n          service  - cand comand un serviciu disponibil;\n          order  - cand faci o comanda custom unde ceri ce vrei tu;\n          command  - cand faci o comanda cu produse;\n          cancel-command - cand refuz o comanda din admin;",
+                "operationId": "get-table-info",
+                "parameters": [
+                    {
+                        "name": "table_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        },
+        "/api/picoly/get-order-info": {
+            "post": {
+                "tags": [
+                    "Get order info by table_id and date"
+                ],
+                "summary": "Fetch order info by table id and date",
+                "description": "Deal: name, description;\n          Service: name, description, price;\n          Product: anything else;",
+                "operationId": "get-table-info",
+                "parameters": [
+                    {
+                        "name": "table_id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        },
+        "/api/picoly/get-waiters": {
+            "get": {
+                "tags": [
+                    "Get waiters"
+                ],
+                "summary": "Fetch waiters",
+                "operationId": "get-waiters",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                },
+                "security": [
+                    {
+                        "token_auth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "token_auth": {
+                "type": "apiKey",
+                "description": "A short description for security scheme",
+                "name": "token",
+                "in": "header"
+            }
+        }
+    }
+}
